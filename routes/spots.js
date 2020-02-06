@@ -1,42 +1,42 @@
-var Lots = require("../models/Lot")
+var Spots = require("../models/spot")
 var express = require("express")
 var router = express.Router()
 
-//Get all lots
+//Get all spots
 router.get("/", function(req, res, next) {
-  Lots.find(function(err, lots) {
+  Spots.find(function(err, spots) {
     if (err) return next(err)
-    res.json(lots)
+    res.json(spots)
   })
 })
 
 //Get by ID
 router.get("/:id", function(req, res, next) {
-  Lots.findById(req.params.id, function(err, post) {
+  Spots.findById(req.params.id, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Create Lot
+//Create spot
 router.post("/", function(req, res, next) {
-  Lots.create(req.body, function(err, post) {
+  Spots.create(req.body, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Update Lot
+//Update spot
 router.put("/:id", function(req, res, next) {
-  Lots.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+  Spots.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Delete Lot
+//Delete spot
 router.delete("/:id", function(req, res, next) {
-  Lots.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+  Spots.findByIdAndRemove(req.params.id, req.body, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
