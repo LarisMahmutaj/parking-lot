@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const SpotsSchema = mongoose.Schema({
   spot_id: String,
-  receipt: Number,
+  price: Number,
   start_time: Date,
   status: String,
   customer_id: String

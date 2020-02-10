@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column w-75 py-5">
-    <form @submit="onSubmit">
+    <form @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="id">Id:</label>
         <input
@@ -9,16 +9,42 @@
           class="form-control"
           placeholder="Id"
           v-model="customer.customer_id"
+          required
+          aria-describedby="info"
         />
+        <small id="info" class="form-text text-muted">Customer ID number</small>
       </div>
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="firstName">First Name:</label>
         <input
           class="form-control"
           type="text"
-          v-model="customer.name"
-          placeholder="Name"
-          id="name"
+          v-model="customer.firstName"
+          placeholder="First Name"
+          id="firstName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Last Name"
+          class="form-control"
+          v-model="customer.lastName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          placeholder="Email"
+          required
+          v-model="customer.email"
         />
       </div>
       <button type="submit" class="btn btn-primary">Add Customer</button>
@@ -27,7 +53,7 @@
 </template>
 
 <script>
-/*eslint-disable*/
+/* eslint-disable */
 import axios from "axios";
 
 export default {

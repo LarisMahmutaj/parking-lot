@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view class="container" />
+    <router-view class="container-fluid" />
   </div>
 </template>
 
@@ -16,6 +16,9 @@ export default {
 </script>
 
 <style>
+.container {
+  margin: 0;
+}
 #nav {
   padding: 30px;
 }
