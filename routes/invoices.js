@@ -1,42 +1,42 @@
-var Spots = require("../models/Spot")
+var Invoices = require("../models/Invoice")
 var express = require("express")
 var router = express.Router()
 
-//Get all spots
+// Get all invoices
 router.get("/", function(req, res, next) {
-  Spots.find(function(err, spots) {
+  Invoices.find(function(err, invoices) {
     if (err) return next(err)
-    res.json(spots)
+    res.json(invoices)
   })
 })
 
-//Get by ID
+// Get by ID
 router.get("/:id", function(req, res, next) {
-  Spots.findById(req.params.id, function(err, post) {
+  Invoices.findById(req.params.id, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Create spot
+// Create Invoice
 router.post("/", function(req, res, next) {
-  Spots.create(req.body, function(err, post) {
+  Invoices.create(req.body, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Update spot
+// Update Invoice
 router.put("/:id", function(req, res, next) {
-  Spots.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+  Invoices.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })
 })
 
-//Delete spot
+// Delete Invoice
 router.delete("/:id", function(req, res, next) {
-  Spots.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+  Invoices.findByIdAndRemove(req.params.id, function(err, post) {
     if (err) return next(err)
     res.json(post)
   })

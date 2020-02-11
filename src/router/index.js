@@ -5,7 +5,7 @@ import ParkingLot from "../components/Parking/ParkingLot"
 import NewSpot from "../components/Parking/NewSpot"
 import NewCustomer from "../components/Customers/NewCustomer"
 import SpotDetails from "../components/Parking/SpotDetails"
-
+import Invoices from "../components/Invoices/Invoices"
 Vue.use(VueRouter)
 
 const routes = [
@@ -42,6 +42,11 @@ const routes = [
     path: "/spot-details",
     name: "spot-details",
     component: SpotDetails
+  },
+  {
+    path: "/invoices",
+    name: "invoices",
+    component: Invoices
   }
 ]
 

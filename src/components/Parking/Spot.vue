@@ -73,6 +73,6 @@
 <style scoped>
 	.card {
 		margin: 10px;
-		width: 210px;
+		width: 228px;
 	}
 </style>

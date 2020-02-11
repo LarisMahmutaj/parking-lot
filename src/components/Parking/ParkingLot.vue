@@ -28,15 +28,11 @@
 <script>
 	/* eslint-disable */
 	import Spot from "./Spot";
-	import axios from "axios";
 	import { mapGetters, mapActions } from "vuex";
 
 	export default {
 		name: "ParkingLot",
 		computed: mapGetters(["freeSpots", "occupiedSpots"]),
-		data() {
-			return {};
-		},
 		components: {
 			Spot: Spot
 		},
@@ -54,6 +50,7 @@
 		width: 100%;
 		height: 100%;
 		display: flex;
+		align-content: baseline;
 		flex-wrap: wrap;
 	}
 

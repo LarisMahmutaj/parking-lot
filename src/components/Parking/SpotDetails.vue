@@ -65,12 +65,12 @@
 			};
 		},
 		computed: {
-			...mapGetters(["spotDetails"])
+			...mapGetters(["spotDetails", "allInvoices"])
 		},
 		created() {},
 
 		methods: {
-			...mapActions(["getSpot", "updateSpot"]),
+			...mapActions(["getSpot", "updateSpot", "addInvoice"]),
 			async startSession() {
 				var updSpot = this.spotDetails;
 				updSpot.start_time = new Date();
@@ -83,12 +83,24 @@
 				});
 			},
 			async endSession() {
-				var updSpot = this.spotDetails;
+				//End Session
+				const updSpot = { ...this.spotDetails };
 				updSpot.start_time = null;
 				updSpot.status = "Free";
 				alert("Receipt: " + updSpot.receipt.toFixed(2) + "€");
 				updSpot.receipt = 0;
 
+				//Set Invoice
+				var invoiceId = this.allInvoices.length + 1;
+				var invoice = {
+					invoice_id: invoiceId,
+					spot_id: this.spotDetails.spot_id,
+					start_time: new Date(this.spotDetails.start_time),
+					end_time: new Date(),
+					receipt: this.spotDetails.receipt
+				};
+
+				await this.addInvoice(invoice);
 				await this.updateSpot(updSpot);
 				this.$router.push({
 					name: "parking-lot"

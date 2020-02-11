@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 import axios from "axios"
 
 const state = {
@@ -43,8 +41,10 @@ const actions = {
 }
 
 const mutations = {
-  setSpots: (state, spots) => (state.spots = spots),
-
+  setSpots: (state, spots) => {
+    state.spots = spots
+  },
+  /* eslint-disable */
   setSpot: (state, spot) => {
     if (spot.start_time !== null) {
       var currentTime = new Date()
@@ -53,10 +53,10 @@ const mutations = {
         Math.abs(currentTime - startTime) / (60 * 60 * 1000)
       )
       spot.receipt = hours * spot.price
+      spot.start_time = startTime
     } else {
       spot.receipt = 0
     }
-
     state.spotDetails = spot
   },
 
