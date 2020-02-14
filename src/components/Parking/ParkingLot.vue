@@ -2,7 +2,7 @@
 	<div class="parking-lot">
 		<div class="w-50">
 			<div class="text-center">
-				<h3>Free</h3>
+				<h3>Free: {{ freeSpots.length }}</h3>
 			</div>
 			<hr />
 			<div class="spot-group">
@@ -13,7 +13,7 @@
 		</div>
 		<div class="w-50">
 			<div class="text-center">
-				<h3>Occupied</h3>
+				<h3>Occupied: {{ occupiedSpots.length }}</h3>
 			</div>
 			<hr />
 			<div class="spot-group">

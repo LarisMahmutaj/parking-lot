@@ -1,7 +1,22 @@
 <template>
 	<div>
-		<h3>Spot {{ spotDetails.spot_id }} details:</h3>
 		<div id="spot-details" class="my-5 d-flex flex-column align-items-center">
+			<div class="alert alert-info fade show w-50" role="alert">
+				<h4 class="alert-heading">Session Done</h4>
+				<hr />
+				<div class="d-flex justify-content-between align-items-center">
+					<h5 class="m-0">Receipt: {{ spotDetails.receipt.toFixed(2) }}€</h5>
+					<button
+						type="button"
+						class="btn btn-primary"
+						data-dismiss="alert"
+						aria-label="Close"
+						@click="endSession"
+					>
+						Dismiss
+					</button>
+				</div>
+			</div>
 			<ul class="list-group w-50">
 				<!-- Status -->
 				<li
@@ -37,7 +52,10 @@
 					Receipt: {{ spotDetails.receipt.toFixed(2) }}€
 				</li>
 			</ul>
-			<div class="py-3">
+			<div class="py-3 w-25 d-flex flex-row justify-content-around">
+				<router-link to="/parking-lot" class="btn btn-dark"
+					><i class="fas fa-arrow-left"></i> Parking Lot</router-link
+				>
 				<button
 					v-if="spotDetails.status == 'Free'"
 					class="btn btn-info"
@@ -45,8 +63,8 @@
 				>
 					<i class="fas fa-stopwatch"></i> Start Session
 				</button>
-				<button v-else class="btn btn-info" @click="endSession">
-					End Session
+				<button id="alert-trigger" v-else class="btn btn-info">
+					<i class="fas fa-stopwatch"></i> End Session
 				</button>
 			</div>
 		</div>
@@ -55,6 +73,13 @@
 
 <script>
 	/* eslint-disable */
+
+	$(document).ready(function() {
+		$("#alert-trigger").click(function() {
+			$(".alert").show();
+		});
+	});
+
 	import axios from "axios";
 	import { mapGetters, mapActions } from "vuex";
 
@@ -67,10 +92,12 @@
 		computed: {
 			...mapGetters(["spotDetails", "allInvoices"])
 		},
-		created() {},
+		created() {
+			this.fetchInvoices();
+		},
 
 		methods: {
-			...mapActions(["getSpot", "updateSpot", "addInvoice"]),
+			...mapActions(["getSpot", "updateSpot", "addInvoice", "fetchInvoices"]),
 			async startSession() {
 				var updSpot = this.spotDetails;
 				updSpot.start_time = new Date();
@@ -87,7 +114,6 @@
 				const updSpot = { ...this.spotDetails };
 				updSpot.start_time = null;
 				updSpot.status = "Free";
-				alert("Receipt: " + updSpot.receipt.toFixed(2) + "€");
 				updSpot.receipt = 0;
 
 				//Set Invoice
@@ -110,5 +136,8 @@
 	};
 </script>
 
-<style>
+<style scoped>
+	.alert {
+		display: none;
+	}
 </style>
