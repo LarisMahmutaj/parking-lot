@@ -4,7 +4,7 @@
 		style="height: 90vh; width: 90%"
 	>
 		<div>
-			<form class="card p-5 border-primary" @submit.prevent="submit" action="#">
+			<form class="card p-5" @submit.prevent="submit" action="#">
 				<h3 class="mb-4">Register</h3>
 				<div class="form-group">
 					<label for="email">Email:</label>

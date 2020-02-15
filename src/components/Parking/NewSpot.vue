@@ -11,7 +11,7 @@
 					aria-describedby="idInfo"
 					readonly
 				/>
-				<small id="idInfo" class="form-text text-muted">Auto Generated</small>
+				<small id="idInfo" class="form-text text-primary">Auto Generated</small>
 			</div>
 			<div class="form-group">
 				<label for="price">Price:</label>

@@ -48,7 +48,7 @@
 <style scoped>
 	.spot-group {
 		width: 100%;
-		height: 100%;
+		height: inherit;
 		display: flex;
 		align-content: baseline;
 		flex-wrap: wrap;
@@ -57,5 +57,6 @@
 	.parking-lot {
 		display: flex;
 		flex-direction: row;
+		height: inherit;
 	}
 </style>

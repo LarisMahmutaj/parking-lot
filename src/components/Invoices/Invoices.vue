@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<table class="table table-hover my-5">
+		<table class="table table-hover table-light my-5">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>

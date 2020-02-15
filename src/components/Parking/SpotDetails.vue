@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div id="spot-details" class="my-5 d-flex flex-column align-items-center">
-			<div class="alert alert-info fade show w-50" role="alert">
+			<div id="alert" class="alert alert-info fade show w-50" role="alert">
 				<h4 class="alert-heading">Session Done</h4>
 				<hr />
 				<div class="d-flex justify-content-between align-items-center">
@@ -63,7 +63,7 @@
 				>
 					<i class="fas fa-stopwatch"></i> Start Session
 				</button>
-				<button id="alert-trigger" v-else class="btn btn-info">
+				<button @click="showAlert" v-else class="btn btn-info">
 					<i class="fas fa-stopwatch"></i> End Session
 				</button>
 			</div>
@@ -72,15 +72,7 @@
 </template>
 
 <script>
-	/* eslint-disable */
-
-	$(document).ready(function() {
-		$("#alert-trigger").click(function() {
-			$(".alert").show();
-		});
-	});
-
-	import axios from "axios";
+	/*eslint-disable*/
 	import { mapGetters, mapActions } from "vuex";
 
 	export default {
@@ -98,6 +90,9 @@
 
 		methods: {
 			...mapActions(["getSpot", "updateSpot", "addInvoice", "fetchInvoices"]),
+			showAlert() {
+				document.getElementById("alert").style.display = "block";
+			},
 			async startSession() {
 				var updSpot = this.spotDetails;
 				updSpot.start_time = new Date();
