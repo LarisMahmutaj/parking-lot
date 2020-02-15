@@ -6,6 +6,7 @@ const config = require("./DB")
 const spots = require("../routes/spots")
 const customers = require("../routes/customers")
 const invoices = require("../routes/invoices")
+const admins = require("../routes/admins")
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.DB)
@@ -16,6 +17,7 @@ app.use(cors())
 app.use("/spots", spots)
 app.use("/customers", customers)
 app.use("/invoices", invoices)
+app.use("/admins", admins)
 
 var port = process.env.PORT || 4000
 

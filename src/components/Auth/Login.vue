@@ -54,7 +54,7 @@
 					.signInWithEmailAndPassword(this.form.email, this.form.password)
 					.then(data => {
 						this.$router.push({
-							name: "home"
+							name: "parking-lot"
 						});
 					})
 					.catch(err => {

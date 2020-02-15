@@ -1,6 +1,5 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Home from "../components/Home"
 import ParkingLot from "../components/Parking/ParkingLot"
 import NewSpot from "../components/Parking/NewSpot"
 import NewCustomer from "../components/Customers/NewCustomer"
@@ -8,20 +7,20 @@ import SpotDetails from "../components/Parking/SpotDetails"
 import Invoices from "../components/Invoices/Invoices"
 import Login from "../components/Auth/Login"
 import Register from "../components/Auth/Register"
-import Users from "../components/Users/Users"
+import About from "../components/About"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home
-  },
-  {
-    path: "/parking-lot",
     name: "parking-lot",
     component: ParkingLot
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
   },
   {
     path: "/new-spot",
@@ -52,11 +51,6 @@ const routes = [
     path: "/register",
     name: "register",
     component: Register
-  },
-  {
-    path: "/users",
-    name: "users",
-    component: Users
   }
 ]
 
