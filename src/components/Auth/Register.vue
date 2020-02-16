@@ -1,10 +1,10 @@
 <template>
 	<div
 		class="d-flex justify-content-around align-items-center"
-		style="height: 90vh; width: 90%"
+		style="min-height: 90vh; min-width: 90%"
 	>
 		<div>
-			<form class="card p-5" @submit.prevent="submit" action="#">
+			<form class="card m-3 p-5" @submit.prevent="submit" action="#">
 				<h3 class="mb-4">Register</h3>
 				<div class="form-group">
 					<label for="email">Email:</label>
@@ -40,7 +40,7 @@
 				<button type="submit" class="btn btn-outline-success">Register</button>
 			</form>
 		</div>
-		<!-- <img src="../../assets/login-img.svg" alt="" /> -->
+		<img src="../../assets/register-img.svg" alt="" />
 	</div>
 </template>
 
@@ -79,10 +79,17 @@
 </script>
 
 <style scoped>
-	img {
-		width: 500px;
+	@media only screen and (min-width: 768px) {
+		img {
+			width: 500px;
+		}
+		.card {
+			width: 400px;
+		}
 	}
-	.card {
-		width: 400px;
+	@media only screen and (max-width: 992px) {
+		img {
+			display: none;
+		}
 	}
 </style>

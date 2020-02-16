@@ -26,9 +26,18 @@ const actions = {
 
       const response = await axios.get("http://localhost:4000/admins")
       const admins = response.data
-      const admin = admins.filter(a => a.admin_id === user.uid)
-      console.log(admin)
-      commit("setAdmin", admin.length !== 0)
+      if (admins.length === 0) {
+        var u = {
+          admin_id: user.uid,
+          username: user.displayName,
+          email: user.email
+        }
+        await axios.post("http://localhost:4000/admins", u)
+        commit("setAdmin", true)
+      } else {
+        const admin = admins.filter(a => a.admin_id === user.uid)
+        commit("setAdmin", admin.length !== 0)
+      }
     } else {
       commit("setUser", null)
     }
@@ -36,6 +45,14 @@ const actions = {
   clearUser: ({ commit }) => {
     commit("userClear")
   }
+  // makeAdmin: async ({ commit }, user) => {
+  //   var u = {
+  //     admin_id: user.uid,
+  //     username: user.displayName,
+  //     email: user.email
+  //   }
+  //   await axios.post("http://localhost:4000/admins", u)
+  // }
 }
 
 const mutations = {

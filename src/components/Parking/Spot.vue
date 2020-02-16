@@ -26,6 +26,7 @@
 		</div>
 
 		<a
+			v-if="getUser.isAdmin"
 			type="button"
 			@click.stop="spotDetails(spot._id)"
 			class="stretched-link"
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-	import { mapActions } from "vuex";
+	import { mapActions, mapGetters } from "vuex";
 	export default {
 		name: "Spot",
 		props: ["spot"],
@@ -44,6 +45,7 @@
 			};
 		},
 		computed: {
+			...mapGetters(["getUser"]),
 			calcReceipt: function() {
 				if (this.spot.start_time !== null) {
 					let currentTime = new Date();

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<table class="table table-hover table-light my-5">
+		<table class="table table-hover table-light my-5" v-if="getUser.isAdmin">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>
@@ -20,17 +20,21 @@
 				</tr>
 			</tbody>
 		</table>
+		<AccessDenied v-else />
 	</div>
 </template>
 
 <script>
 	/* eslint-disable */
 	import { mapGetters, mapActions } from "vuex";
+	import AccessDenied from "../AccessDenied";
 
 	export default {
 		name: "Invoices",
-
-		computed: mapGetters(["allInvoices"]),
+		components: {
+			AccessDenied: AccessDenied
+		},
+		computed: mapGetters(["allInvoices", "getUser"]),
 		created() {
 			this.fetchInvoices();
 		},

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="getUser.isAdmin">
 		<div id="spot-details" class="my-5 d-flex flex-column align-items-center">
 			<div id="alert" class="alert alert-info fade show w-50" role="alert">
 				<h4 class="alert-heading">Session Done</h4>
@@ -82,7 +82,7 @@
 			};
 		},
 		computed: {
-			...mapGetters(["spotDetails", "allInvoices"])
+			...mapGetters(["spotDetails", "allInvoices", "getUser"])
 		},
 		created() {
 			this.fetchInvoices();

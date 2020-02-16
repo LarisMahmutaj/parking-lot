@@ -1,10 +1,10 @@
 <template>
 	<div
 		class="d-flex justify-content-around align-items-center"
-		style="height: 90vh; width: 90%"
+		style="min-height: 90vh; min-width: 90%"
 	>
 		<div>
-			<form class="card p-5" @submit.prevent="submit">
+			<form class="card m-3 p-5" @submit.prevent="submit">
 				<h3 class="mb-4">Log In</h3>
 				<div class="form-group">
 					<label for="email">Email:</label>
@@ -66,10 +66,17 @@
 </script>
 
 <style scoped>
-	img {
-		width: 500px;
+	@media only screen and (min-width: 768px) {
+		img {
+			width: 500px;
+		}
+		.card {
+			width: 400px;
+		}
 	}
-	.card {
-		width: 400px;
+	@media only screen and (max-width: 992px) {
+		img {
+			display: none;
+		}
 	}
 </style>
