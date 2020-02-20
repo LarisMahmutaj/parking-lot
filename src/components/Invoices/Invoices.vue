@@ -1,6 +1,9 @@
 <template>
-	<div>
-		<table class="table table-hover table-light my-5" v-if="getUser.isAdmin">
+	<div class="invoices table-responsive-sm m-0">
+		<table
+			class="table table-hover table-light m-md-4 my-3"
+			v-if="getUser.isAdmin"
+		>
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>
@@ -44,5 +47,8 @@
 	};
 </script>
 
-<style>
+<style scoped>
+	.invoices {
+		display: flex;
+	}
 </style>

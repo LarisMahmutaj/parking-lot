@@ -2,7 +2,7 @@
 	<div v-if="getUser.isAdmin">
 		<div id="spot-details" class="my-5 d-flex flex-column align-items-center">
 			<div id="alert" class="alert alert-info fade show w-50" role="alert">
-				<h4 class="alert-heading">Session Done</h4>
+				<h4 class="alert-heading">End Session?</h4>
 				<hr />
 				<div class="d-flex justify-content-between align-items-center">
 					<h5 class="m-0">Receipt: {{ spotDetails.receipt.toFixed(2) }}€</h5>
@@ -13,7 +13,7 @@
 						aria-label="Close"
 						@click="endSession"
 					>
-						Dismiss
+						End
 					</button>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 				<!-- Receipt -->
 				<li
 					class="list-group-item text-info font-weight-bold"
-					v-if="spotDetails.receipt == null"
+					v-if="spotDetails.receipt === null"
 				>
 					Receipt: 0.00€
 				</li>
@@ -57,7 +57,7 @@
 					><i class="fas fa-arrow-left"></i> Parking Lot</router-link
 				>
 				<button
-					v-if="spotDetails.status == 'Free'"
+					v-if="spotDetails.status === 'Free'"
 					class="btn btn-info"
 					@click="startSession"
 				>
@@ -91,6 +91,7 @@
 		methods: {
 			...mapActions(["getSpot", "updateSpot", "addInvoice", "fetchInvoices"]),
 			showAlert() {
+				document.getElementById("alert").style.transition = "0.1";
 				document.getElementById("alert").style.display = "block";
 			},
 			async startSession() {
