@@ -5,7 +5,7 @@ const SpotsSchema = mongoose.Schema({
   price: Number,
   start_time: Date,
   status: String,
-  customer_id: String
+  customer_car_plates: String
 })
 
 module.exports = mongoose.model("Spots", SpotsSchema)

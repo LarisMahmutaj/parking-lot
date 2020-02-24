@@ -1,12 +1,14 @@
 const mongoose = require("mongoose")
 
 const CustomersSchema = mongoose.Schema({
-  customer_id: String,
-  firstName: String,
-  lastName: String,
+  firebase_id: String,
+  first_name: String,
+  last_name: String,
   email: String,
-  expiry_date: Date,
-  expired: Boolean
+  car_reg_plate: String,
+  phone_number: String,
+  is_parked: Boolean,
+  times_parked: Number
 })
 
 module.exports = mongoose.model("Customers", CustomersSchema)

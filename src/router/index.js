@@ -8,10 +8,16 @@ import Invoices from "../components/Invoices/Invoices"
 import Login from "../components/Auth/Login"
 import Register from "../components/Auth/Register"
 import About from "../components/About"
+import Welcome from "../components/Welcome"
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: "/",
+    name: "/welcome",
+    component: Welcome
+  },
   {
     path: "/parking-lot",
     name: "parking-lot",

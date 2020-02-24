@@ -28,6 +28,9 @@
 				</div>
 				<p class="text-danger" v-if="error">{{ error }}</p>
 				<button type="submit" class="btn btn-outline-success">Log In</button>
+				<p class="mt-2">
+					<router-link to="/register">No account? Register!</router-link>
+				</p>
 			</form>
 		</div>
 		<img src="../../assets/login-img.svg" alt="" />

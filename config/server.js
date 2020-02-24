@@ -9,7 +9,7 @@ const invoices = require("../routes/invoices")
 const admins = require("../routes/admins")
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.DB)
+mongoose.connect(config.DB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express()
 app.use(bodyParser.json())

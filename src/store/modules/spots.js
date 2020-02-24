@@ -2,14 +2,16 @@ import axios from "axios"
 
 const state = {
   spots: [],
-  spotDetails: {}
+  spotDetails: {},
+  showPlates: true
 }
 
 const getters = {
   allSpots: state => state.spots,
   freeSpots: state => state.spots.filter(spot => spot.status == "Free"),
   occupiedSpots: state => state.spots.filter(spot => spot.status == "Occupied"),
-  spotDetails: state => state.spotDetails
+  spotDetails: state => state.spotDetails,
+  showPlates: state => state.showPlates
 }
 
 const actions = {
@@ -37,6 +39,10 @@ const actions = {
       updSpot
     )
     commit("updateSpot", response.data)
+  },
+
+  updateShowPlates({ commit }, value) {
+    commit("updateSP", value)
   }
 }
 
@@ -66,6 +72,10 @@ const mutations = {
 
   updateSpot: (state, updSpot) => {
     state.spotDetails = updSpot
+  },
+
+  updateSP: (state, value) => {
+    state.showPlates = value
   }
 }
 

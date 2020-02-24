@@ -16,13 +16,23 @@
 			Spot {{ spot.spot_id }}
 		</div>
 		<div class="card-body">
-			<p class="text-muted font-weight-bold small">
+			<p class="text-muted font-weight-bold small m-0">
 				Price: {{ spot.price.toFixed(2) }}€ / h
 			</p>
-			<p v-if="spot.start_time === null" class="m-0 text-info">
-				Receipt: {{ calcReceipt.toFixed(2) }}
+			<p
+				class="m-0 text-dark font-weight-bolder"
+				v-if="showPlates && spot.status == 'Occupied'"
+			>
+				Plates: {{ spot.customer_car_plates }}
 			</p>
-			<p v-else class="m-0 text-info">Receipt: {{ calcReceipt.toFixed(2) }}€</p>
+			<div v-if="getUser.isAdmin">
+				<p v-if="spot.start_time === null" class="m-0 text-info">
+					Receipt: {{ calcReceipt.toFixed(2) }}
+				</p>
+				<p v-else class="m-0 text-info">
+					Receipt: {{ calcReceipt.toFixed(2) }}€
+				</p>
+			</div>
 		</div>
 
 		<a
@@ -45,7 +55,7 @@
 			};
 		},
 		computed: {
-			...mapGetters(["getUser"]),
+			...mapGetters(["getUser", "showPlates", "getUser"]),
 			calcReceipt: function() {
 				if (this.spot.start_time !== null) {
 					let currentTime = new Date();
@@ -61,8 +71,8 @@
 		},
 		methods: {
 			...mapActions(["fetchSingleSpot"]),
-			spotDetails(spot_id) {
-				this.fetchSingleSpot(spot_id);
+			async spotDetails(spot_id) {
+				await this.fetchSingleSpot(spot_id);
 				this.$router.push({
 					name: "spot-details",
 					params: { id: spot_id }

@@ -20,6 +20,7 @@ const actions = {
     commit("setLoggedIn", user !== null)
     if (user) {
       commit("setUser", {
+        uid: user.uid,
         displayName: user.displayName,
         email: user.email
       })
@@ -32,7 +33,9 @@ const actions = {
           username: user.displayName,
           email: user.email
         }
+
         await axios.post("http://localhost:4000/admins", u)
+
         commit("setAdmin", true)
       } else {
         const admin = admins.filter(a => a.admin_id === user.uid)
