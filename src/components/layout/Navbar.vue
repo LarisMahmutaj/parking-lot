@@ -54,6 +54,11 @@
 									class="dropdown-item text-info bg-white font-weight-bold"
 									>Invoices</router-link
 								>
+								<router-link
+									to="/customers"
+									class="dropdown-item text-info bg-white font-weight-bold"
+									>Customers</router-link
+								>
 								<div class="dropdown-divider"></div>
 							</template>
 							<a

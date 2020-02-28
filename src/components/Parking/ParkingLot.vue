@@ -19,7 +19,10 @@
 							<h3 class="m-0">Free: {{ freeSpots.length }}</h3>
 						</div>
 						<hr class="my-0" />
-						<div class="spot-group">
+						<div
+							class="spot-group"
+							:class="{ 'justify-content-center': !getUser.isAdmin }"
+						>
 							<div v-for="s in freeSpots" :key="s.spot_id">
 								<Spot :spot="s" />
 							</div>
@@ -99,7 +102,7 @@
 		width: 100%;
 		height: inherit;
 		display: flex;
-		align-content: baseline;
+		align-content: middle;
 		flex-wrap: wrap;
 	}
 

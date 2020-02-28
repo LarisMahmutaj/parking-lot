@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import ParkingLot from "../components/Parking/ParkingLot"
 import NewSpot from "../components/Parking/NewSpot"
-import NewCustomer from "../components/Customers/NewCustomer"
+import Customers from "../components/Customers/Customers"
 import SpotDetails from "../components/Parking/SpotDetails"
 import Invoices from "../components/Invoices/Invoices"
 import Login from "../components/Auth/Login"
@@ -34,9 +34,9 @@ const routes = [
     component: NewSpot
   },
   {
-    path: "/new-customer",
-    name: "new-customer",
-    component: NewCustomer
+    path: "/customers",
+    name: "customers",
+    component: Customers
   },
   {
     path: "/spot-details",
