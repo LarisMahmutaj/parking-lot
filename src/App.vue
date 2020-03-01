@@ -17,7 +17,7 @@
 
 <style>
 	#app {
-		background-color: #68c5db;
+		background-color: #1a8fe3;
 		min-height: 100%;
 	}
 </style>

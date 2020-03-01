@@ -4,7 +4,7 @@
 			<!-- Start Session -->
 			<div
 				id="start-alert"
-				class="alert alert-info fade show w-50"
+				class="alert alert-success fade show w-50"
 				role="alert"
 			>
 				<h4 class="alert-heading">Start Session</h4>
@@ -42,11 +42,15 @@
 			</div>
 
 			<!-- End session -->
-			<div id="end-alert" class="alert alert-info fade show w-50" role="alert">
+			<div
+				id="end-alert"
+				class="alert alert-success fade show w-50"
+				role="alert"
+			>
 				<h4 class="alert-heading">End Session?</h4>
 				<hr />
 				<div class="d-flex justify-content-between align-items-center">
-					<h5 class="m-0">Receipt: {{ spotDetails.receipt }}€</h5>
+					<h5 class="m-0">Receipt: {{ total }}€</h5>
 					<div>
 						<button class="btn btn-secondary mr-2" @click="hideEndAlert">
 							Cancel
@@ -116,14 +120,14 @@
 				>
 				<button
 					v-if="spotDetails.status === 'Free'"
-					class="btn btn-info"
+					class="btn btn-primary"
 					data-toggle="modal"
 					data-target="#exampleModal"
 					@click="showStartAlert"
 				>
 					<i class="fas fa-stopwatch"></i> Start Session
 				</button>
-				<button @click="showEndAlert" v-else class="btn btn-info">
+				<button @click="showEndAlert" v-else class="btn btn-primary">
 					<i class="fas fa-stopwatch"></i> End Session
 				</button>
 			</div>
@@ -142,7 +146,8 @@
 				form: {
 					customer_car_plates: ""
 				},
-				customer: {}
+				customer: {},
+				total: 0
 			};
 		},
 		computed: {
@@ -154,6 +159,12 @@
 		},
 		methods: {
 			showEndAlert() {
+				if (this.currentCustomer.times_parked > 10) {
+					let rcpt = this.spotDetails.receipt - this.spotDetails.receipt * 0.2;
+					this.total = rcpt;
+				} else {
+					this.total = this.spotDetails.receipt;
+				}
 				document.getElementById("end-alert").style.transition = "0.1";
 				document.getElementById("end-alert").style.display = "block";
 			},
@@ -196,13 +207,14 @@
 
 				//Set Invoice
 				var invoiceId = this.allInvoices.length + 1;
+
 				var invoice = {
 					invoice_id: invoiceId,
 					spot_id: this.spotDetails.spot_id,
 					car_plates: this.spotDetails.customer_car_plates,
 					start_time: new Date(this.spotDetails.start_time),
 					end_time: new Date(),
-					receipt: this.spotDetails.receipt
+					receipt: this.total
 				};
 
 				var customer = { ...this.currentCustomer };

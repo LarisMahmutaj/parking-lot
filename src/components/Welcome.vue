@@ -1,12 +1,13 @@
 <template>
 	<div class="d-flex flex-column p-4">
-		<div class="d-flex align-items-center">
-			<img src="../assets/welcome.svg" alt="" />
+		<div class="d-flex align-items-center justify-content-around">
 			<div>
-				<h1>Welcome to Parking Lot</h1>
-				<h4>Find a parking space in a matter of minutes</h4>
+				<h1 class="text-white">Welcome to Parking Lot</h1>
+				<h4 class="pb-4 text-white" style="color:#333">
+					Find a parking space in a matter of minutes
+				</h4>
 				<div>
-					<router-link to="/login" class="btn btn-primary mr-2"
+					<router-link to="/login" class="btn mr-2 btn-primary"
 						>Login</router-link
 					>
 					<router-link to="/register" class="btn btn-primary"
@@ -14,6 +15,7 @@
 					>
 				</div>
 			</div>
+			<img src="../assets/welcome.svg" alt="" />
 		</div>
 	</div>
 </template>
@@ -27,5 +29,11 @@
 <style scoped>
 	img {
 		width: 800px;
+	}
+
+	@media only screen and (max-width: 1200px) {
+		img {
+			display: none;
+		}
 	}
 </style>

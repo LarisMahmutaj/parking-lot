@@ -1,6 +1,6 @@
 <template>
 	<div class="px-5">
-		<div class="d-flex flex-column w-75 py-5" v-if="getUser.isAdmin">
+		<div class="d-flex flex-column w-75 py-5 text-white" v-if="getUser.isAdmin">
 			<form @submit.prevent="onSubmit">
 				<div class="form-group">
 					<label for="id">Id:</label>
@@ -12,12 +12,10 @@
 						aria-describedby="idInfo"
 						readonly
 					/>
-					<small id="idInfo" class="form-text text-primary"
-						>Auto Generated</small
-					>
+					<small id="idInfo" class="form-text text-white">Auto Generated</small>
 				</div>
 				<div class="form-group">
-					<label for="price">Price:</label>
+					<label for="price">Price / hour:</label>
 					<b-form-radio-group
 						required
 						v-model="spot.price"

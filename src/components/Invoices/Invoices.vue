@@ -1,11 +1,9 @@
 <template>
-	<div class="invoices table-responsive-sm m-0">
-		<table
-			class="table table-hover table-light m-md-4 my-3"
-			v-if="getUser.isAdmin"
-		>
-			<thead class="thead-dark">
-				<tr>
+	<div class="w-75 table-responsive py-3">
+		<h3 class="text-white">Invoices</h3>
+		<table class="table table-hover" v-if="getUser.isAdmin">
+			<thead>
+				<tr class="table-primary">
 					<th scope="col">ID</th>
 					<th scope="col">Spot ID</th>
 					<th scope="col">Car Plates</th>
@@ -15,7 +13,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="invoice in allInvoices.reverse()" :key="invoice.invoice_id">
+				<tr
+					class="table-light"
+					v-for="invoice in allInvoices.reverse()"
+					:key="invoice.invoice_id"
+				>
 					<th scope="row">{{ invoice.invoice_id }}</th>
 					<td>{{ invoice.spot_id }}</td>
 					<td>{{ invoice.car_plates }}</td>
@@ -50,7 +52,4 @@
 </script>
 
 <style scoped>
-	.invoices {
-		display: flex;
-	}
 </style>

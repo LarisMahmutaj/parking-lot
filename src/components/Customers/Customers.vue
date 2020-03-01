@@ -1,11 +1,9 @@
 <template>
-	<div class="w-75">
-		<table
-			class="table table-hover table-light m-md-4 my-3"
-			v-if="getUser.isAdmin"
-		>
-			<thead class="thead-dark">
-				<tr>
+	<div class="w-75 my-3">
+		<h3 class="text-white">Customers</h3>
+		<table class="table table-hover" v-if="getUser.isAdmin">
+			<thead>
+				<tr class="table-primary">
 					<th scope="col">Id</th>
 					<th scope="col">First Name</th>
 					<th scope="col">Last Name</th>
@@ -16,7 +14,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="c in allCustomers" :key="c._id">
+				<tr class="table-light" v-for="c in allCustomers" :key="c._id">
 					<td>{{ c._id }}</td>
 					<td>{{ c.first_name }}</td>
 					<td>{{ c.last_name }}</td>

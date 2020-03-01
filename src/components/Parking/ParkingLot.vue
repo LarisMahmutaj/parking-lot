@@ -14,7 +14,7 @@
 				>
 					<div style="min-width:50%">
 						<div
-							class="text-center d-flex flex-row justify-content-between pl-3"
+							class="text-center my-2 d-flex flex-row justify-content-between pl-3"
 						>
 							<h3 class="m-0">Free: {{ freeSpots.length }}</h3>
 						</div>
@@ -30,7 +30,7 @@
 					</div>
 					<div v-if="getUser.isAdmin" style="min-width:50%">
 						<div
-							class="d-flex flex-row justify-content-between align-items-center pl-3"
+							class="d-flex flex-row justify-content-between align-items-center pl-3 my-2"
 						>
 							<h3 class="m-0">Occupied: {{ occupiedSpots.length }}</h3>
 							<div class="custom-control custom-switch">
@@ -107,6 +107,7 @@
 	}
 
 	.parking-lot {
+		color: #fff;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
