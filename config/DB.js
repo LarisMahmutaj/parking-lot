@@ -1,3 +1,4 @@
 module.exports = {
-  DB: "mongodb://localhost:27017/parkinglot"
-}
+  DB:
+    'mongodb+srv://laris:scnmhfcbmmfthftwwaanem@parking-lot.2yzk4.mongodb.net/parking-lot?retryWrites=true&w=majority',
+};
